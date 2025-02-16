@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  jenkins:
+    build:
+      context: ./jenkins
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JENKINS_OPTS="--prefix=/jenkins"
+    networks:
+      - churn_network
+
+networks:
+  churn_network:
+    driver: bridge
+
+volumes:
+  jenkins_home:
