@@ -4,7 +4,17 @@ USER root
 
 # Install necessary packages
 RUN apt-get update && \
-    apt-get install -y python3-full python3-pip docker.io curl
+    apt-get install -y \
+    python3-full \
+    python3-pip \
+    python3-dev \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    docker.io \
+    curl \
+    gcc \
+    g++
 
 # Install Docker Compose
 RUN curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
@@ -14,6 +24,11 @@ RUN curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-
 ENV VIRTUAL_ENV=/opt/venv
 RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# Upgrade pip and install wheel
+RUN . $VIRTUAL_ENV/bin/activate && \
+    pip install --upgrade pip && \
+    pip install wheel
 
 # Install Python packages in virtual environment
 COPY requirements.txt /tmp/
