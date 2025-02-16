@@ -1,0 +1,7 @@
+{
+    "slack": {
+        "teamDomain": "customerchurnproject",
+        "channel": "#jenkins-builds",
+        "tokenCredentialId": "slack-token"
+    }
+}

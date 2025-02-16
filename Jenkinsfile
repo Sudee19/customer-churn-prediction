@@ -1,44 +1,45 @@
 pipeline {
     agent any
-    
+
     environment {
-        VIRTUAL_ENV = '/opt/venv'
-        PATH = "$VIRTUAL_ENV/bin:$PATH"
+        DOCKER_CREDENTIALS = credentials('docker-hub-credentials')
+        DOCKER_IMAGE = 'sudee19/customer-churn-prediction'
+        DOCKER_TAG = "${BUILD_NUMBER}"
     }
     
     stages {
-        stage('Setup') {
+        stage('Build') {
             steps {
-                sh '''
-                    . $VIRTUAL_ENV/bin/activate
-                    python --version
-                    pip --version
-                '''
+                echo 'Building the application...'
+                script {
+                    sh 'pip install -r requirements.txt'
+                }
             }
         }
         
-        stage('Install Dependencies') {
+        stage('Test') {
             steps {
-                sh '''
-                    . $VIRTUAL_ENV/bin/activate
-                    pip install -r requirements.txt
-                '''
+                echo 'Running tests...'
+                script {
+                    sh 'python -m pytest tests/ || true'
+                }
             }
         }
         
-        stage('Run Tests') {
+        stage('Docker Build') {
             steps {
-                sh '''
-                    . $VIRTUAL_ENV/bin/activate
-                    python -m pytest tests/ || true
-                '''
+                echo 'Deploying the application...'
+                script {
+                    sh 'docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
+                    sh 'docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest'
+                }
             }
         }
-        
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t customer-churn:latest .'
-            }
+    }
+    
+    post {
+        always {
+            cleanWs()
         }
     }
 }
