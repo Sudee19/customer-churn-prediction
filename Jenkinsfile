@@ -1,45 +1,30 @@
 pipeline {
     agent any
-
-    environment {
-        DOCKER_CREDENTIALS = credentials('docker-hub-credentials')
-        DOCKER_IMAGE = 'sudee19/customer-churn-prediction'
-        DOCKER_TAG = "${BUILD_NUMBER}"
-    }
     
     stages {
-        stage('Build') {
+        stage('Setup') {
             steps {
-                echo 'Building the application...'
-                script {
-                    sh 'pip install -r requirements.txt'
-                }
+                sh 'python3 --version'
+                sh 'pip3 --version'
             }
         }
         
-        stage('Test') {
+        stage('Install Dependencies') {
             steps {
-                echo 'Running tests...'
-                script {
-                    sh 'python -m pytest tests/ || true'
-                }
+                sh 'pip3 install -r requirements.txt'
             }
         }
         
-        stage('Docker Build') {
+        stage('Run Tests') {
             steps {
-                echo 'Deploying the application...'
-                script {
-                    sh 'docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
-                    sh 'docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest'
-                }
+                sh 'python3 -m pytest tests/ || true'
             }
         }
-    }
-    
-    post {
-        always {
-            cleanWs()
+        
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t customer-churn:latest .'
+            }
         }
     }
 }
