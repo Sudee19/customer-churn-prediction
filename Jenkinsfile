@@ -3,66 +3,85 @@ pipeline {
     
     environment {
         GITHUB_TOKEN = credentials('github-token')
-        DOCKER_REGISTRY = 'docker.io'
-        IMAGE_NAME = 'customer-churn-prediction'
-        IMAGE_TAG = "${BUILD_NUMBER}"
-        AIRFLOW_HOME = '/opt/airflow'
+        DOCKER_CREDENTIALS = credentials('docker-hub-credentials')
+        FIREBASE_CREDENTIALS = credentials('firebase-credentials')
+        DOCKER_IMAGE = 'sudee19/customer-churn-prediction'
+        DOCKER_TAG = "${BUILD_NUMBER}"
     }
     
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master',
+                git branch: 'main',
                     url: 'https://github.com/sudee19/customer-churn-prediction.git',
                     credentialsId: 'github-token'
             }
         }
         
-        stage('Build Environment') {
+        stage('Setup Python') {
             steps {
                 sh '''
-                    docker-compose -f docker-compose.yml build
-                    docker-compose -f docker-compose.yml up -d
+                    python -m venv venv
+                    . venv/bin/activate
+                    pip install -r requirements.txt
                 '''
             }
         }
         
-        stage('Initialize Airflow') {
+        stage('Run Tests') {
             steps {
                 sh '''
-                    docker-compose -f docker-compose.yml exec airflow airflow db init
-                    docker-compose -f docker-compose.yml exec airflow airflow users create \
-                        --username admin \
-                        --firstname Admin \
-                        --lastname User \
-                        --role Admin \
-                        --email admin@example.com \
-                        --password admin
+                    . venv/bin/activate
+                    python -m pytest tests/ --junitxml=test-results/junit.xml || true
                 '''
+            }
+            post {
+                always {
+                    junit '**/test-results/*.xml'
+                }
             }
         }
         
-        stage('Run ETL Pipeline') {
+        stage('Build Docker Images') {
+            steps {
+                sh """
+                    docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} -f Dockerfile .
+                    docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest
+                    docker build -t ${DOCKER_IMAGE}-jenkins:${DOCKER_TAG} -f Dockerfile.jenkins .
+                    docker tag ${DOCKER_IMAGE}-jenkins:${DOCKER_TAG} ${DOCKER_IMAGE}-jenkins:latest
+                """
+            }
+        }
+        
+        stage('Push to Docker Hub') {
+            steps {
+                sh """
+                    echo \$DOCKER_CREDENTIALS_PSW | docker login -u \$DOCKER_CREDENTIALS_USR --password-stdin
+                    docker push ${DOCKER_IMAGE}:${DOCKER_TAG}
+                    docker push ${DOCKER_IMAGE}:latest
+                    docker push ${DOCKER_IMAGE}-jenkins:${DOCKER_TAG}
+                    docker push ${DOCKER_IMAGE}-jenkins:latest
+                """
+            }
+        }
+        
+        stage('Deploy Services') {
+            steps {
+                withCredentials([file(credentialsId: 'firebase-credentials', variable: 'FIREBASE_CREDS')]) {
+                    sh '''
+                        cp $FIREBASE_CREDS firebase_credentials.json
+                        docker-compose -f docker-compose.yml up -d
+                    '''
+                }
+            }
+        }
+        
+        stage('Run Airflow Pipeline') {
             steps {
                 sh '''
-                    # Wait for Airflow webserver to be ready
                     sleep 30
-                    
-                    # Trigger the DAG
-                    docker-compose -f docker-compose.yml exec airflow airflow dags unpause churn_etl_pipeline
-                    docker-compose -f docker-compose.yml exec airflow airflow dags trigger churn_etl_pipeline
-                '''
-            }
-        }
-        
-        stage('Verify Pipeline') {
-            steps {
-                sh '''
-                    # Check DAG status
-                    docker-compose -f docker-compose.yml exec airflow airflow dags show churn_etl_pipeline
-                    
-                    # Get latest run logs
-                    docker-compose -f docker-compose.yml exec airflow airflow dags show churn_etl_pipeline --subdir /opt/airflow/logs/churn_etl_pipeline
+                    docker-compose exec -T webserver airflow dags unpause churn_etl_pipeline
+                    docker-compose exec -T webserver airflow dags trigger churn_etl_pipeline
                 '''
             }
         }
@@ -71,9 +90,16 @@ pipeline {
     post {
         always {
             sh '''
-                # Cleanup
-                docker-compose -f docker-compose.yml down
+                docker-compose down || true
+                docker logout || true
             '''
+            cleanWs()
+        }
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed! Check the logs for details.'
         }
     }
 }
