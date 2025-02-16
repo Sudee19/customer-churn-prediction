@@ -1,23 +1,37 @@
 pipeline {
     agent any
     
+    environment {
+        VIRTUAL_ENV = '/opt/venv'
+        PATH = "$VIRTUAL_ENV/bin:$PATH"
+    }
+    
     stages {
         stage('Setup') {
             steps {
-                sh 'python3 --version'
-                sh 'pip3 --version'
+                sh '''
+                    . $VIRTUAL_ENV/bin/activate
+                    python --version
+                    pip --version
+                '''
             }
         }
         
         stage('Install Dependencies') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                sh '''
+                    . $VIRTUAL_ENV/bin/activate
+                    pip install -r requirements.txt
+                '''
             }
         }
         
         stage('Run Tests') {
             steps {
-                sh 'python3 -m pytest tests/ || true'
+                sh '''
+                    . $VIRTUAL_ENV/bin/activate
+                    python -m pytest tests/ || true
+                '''
             }
         }
         
