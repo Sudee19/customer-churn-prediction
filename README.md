@@ -167,9 +167,9 @@ docker-compose up -d
 ```
 
 2. Access services:
-- Airflow UI: 
-- Jenkins: http://localhost:8081
-- Model API: http://localhost:5000
+- Airflow UI
+- Jenkins
+- Model API
 
 ### Restarting Services
 1. Restart all services:
