@@ -222,3 +222,61 @@ The project uses Jenkins for continuous integration and deployment:
 
 # `Outcome`
 The outcome of this customer churn prediction project involves developing a machine learning model to predict whether customers are likely to churn or not. This prediction is based on various customer attributes such as age, gender, location, subscription length, monthly bill, and total usage. The model's primary purpose is to assist in identifying customers who are at a higher risk of churning, enabling the business to take proactive measures to retain them. By using the trained model to predict churn, the company can allocate resources more effectively, personalize engagement strategies, and implement targeted retention efforts. Ultimately, the project's success is measured by the model's ability to make predictions, helping the company reduce churn rates, improve customer satisfaction, and optimize its customer retention strategies.
+
+# Docker Hub and Firebase Information
+
+## Docker Hub Repository
+The Docker Hub repository for this project is located at [sudee19/customer-churn-prediction](https://hub.docker.com/r/sudee19/customer-churn-prediction).
+
+## Firebase Hosting URL
+The Firebase Hosting URL for this project is [Firebase Hosting URL].
+
+## API Configuration
+
+The project uses Firebase for secure API hosting and data storage. To configure:
+
+1. Set up Firebase:
+   - Create a new Firebase project
+   - Enable Cloud Storage
+   - Download your Firebase credentials
+
+2. Configure environment variables:
+   ```
+   FIREBASE_PROJECT_ID=your-project-id
+   FIREBASE_STORAGE_BUCKET=your-bucket-name
+   ```
+
+## API Endpoints
+
+### Prediction API
+
+- `GET /health` - Health check endpoint
+- `POST /predict` - Single prediction endpoint
+- `POST /batch_predict` - Batch prediction endpoint
+
+Example prediction request:
+```json
+{
+    "customer_id": "123",
+    "tenure": 24,
+    "monthly_charges": 65.5,
+    "total_charges": 1500.0,
+    "contract_type": "Month-to-month",
+    "payment_method": "Electronic check",
+    "internet_service": "Fiber optic"
+}
+```
+
+## Environment Setup
+
+1. Create a `.env` file with the following variables:
+```
+FIREBASE_PROJECT_ID=your-project-id
+FIREBASE_STORAGE_BUCKET=your-bucket-name
+AIRFLOW_UID=50000
+```
+
+2. Set up GitHub Secrets for CI/CD:
+- `DOCKER_USERNAME`
+- `DOCKER_PASSWORD`
+- `FIREBASE_CREDENTIALS`
