@@ -167,7 +167,7 @@ docker-compose up -d
 ```
 
 2. Access services:
-- Airflow UI: http://localhost:8080
+- Airflow UI: 
 - Jenkins: http://localhost:8081
 - Model API: http://localhost:5000
 
