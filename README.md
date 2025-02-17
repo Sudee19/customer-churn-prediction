@@ -1,5 +1,38 @@
 # `Problem Statement: Customer Churn Prediction`
 
+# Technologies & Languages
+
+This project uses a diverse set of technologies and languages:
+
+- Python (40%): Machine Learning, Data Processing, API Development
+  - Scikit-learn, Flask, Pandas, NumPy
+  - Jupyter Notebooks for analysis
+  - ML model files (.pkl, .keras)
+
+- JavaScript/TypeScript (20%): Frontend Development
+  - React.js with TypeScript
+  - Node.js and npm packages
+  - Configuration files
+
+- R (15%): Data Analysis and Visualization
+  - PowerBI dashboards
+  - Statistical analysis
+  - Data visualization
+
+- SQL (5%): Database Operations
+  - MySQL queries
+  - Data extraction and storage
+
+- Docker/DevOps (10%): Infrastructure
+  - Dockerfiles and compose files
+  - Jenkins configuration
+  - Shell scripts
+
+- Documentation/Other (10%): Project Support
+  - Markdown documentation
+  - Data files (CSV, XLSX, JSON)
+  - Configuration files
+
 In today's competitive business landscape, customer retention is paramount for sustainable growth and success. Our challenge is to develop a predictive model that can identify customers who are at risk of churning – discontinuing their use of our service. Customer churn can lead to a significant loss of revenue and a decline in market share. By leveraging machine learning techniques, we aim to build a model that can accurately predict whether a customer is likely to churn based on their historical usage behavior, demographic information, and subscription details. This predictive model will allow us to proactively target high-risk customers with personalized retention strategies, ultimately helping us enhance customer satisfaction, reduce churn rates, and optimize our business strategies. The goal is to create an effective solution that contributes to the long-term success of our company by fostering customer loyalty and engagement.
 
 # `Data Description`
@@ -167,8 +200,8 @@ docker-compose up -d
 ```
 
 2. Access services:
-- Airflow UI
-- Jenkins
+- Airflow UI: http://localhost:8080
+- Jenkins: http://localhost:8081
 - Model API
 
 ### Restarting Services
