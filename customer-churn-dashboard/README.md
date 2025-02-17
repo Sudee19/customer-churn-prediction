@@ -52,10 +52,17 @@ npm install
 npm start
 ```
 
-5. Open your browser and visit:
-```
-http://localhost:3002
-```
+5. Configure the environment:
+   - Create a `.env` file in the root directory
+   - Add your Firebase configuration:
+   ```
+   REACT_APP_FIREBASE_API_KEY=your-api-key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your-app.firebaseapp.com
+   REACT_APP_FIREBASE_PROJECT_ID=your-project-id
+   REACT_APP_FIREBASE_STORAGE_BUCKET=your-app.appspot.com
+   ```
+
+6. The application will automatically open in your default browser
 
 ## Dashboard Components
 
