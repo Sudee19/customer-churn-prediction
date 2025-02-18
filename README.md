@@ -69,40 +69,43 @@ Dataset consists customer information for a customer churn prediction problem. I
 ## PowerBI Dashboards
 
 ### Customer Analysis Dashboard Series
-![Customer Churn PowerBI Dashboard 0](Screenshots/powerbi/dashboard0.png)
+![Customer Analysis Overview](https://i.postimg.cc/prM7BRMy/Customer-Churn-power-BI-dashboard0.png)
 *Dashboard 0: Overview of Customer Metrics*
 
-![Customer Churn PowerBI Dashboard 1](Screenshots/powerbi/dashboard1.png)
+![Customer Segmentation](https://i.postimg.cc/pT5rFYPR/Customer-Churn-power-BI-dashboard1.png)
 *Dashboard 1: Detailed Customer Segmentation*
 
-![Customer Churn PowerBI Dashboard 2](Screenshots/powerbi/dashboard2.png)
+![Risk Analysis](https://i.postimg.cc/Wprtpn97/Customer-churn-power-BI-dashboard2.png)
 *Dashboard 2: Risk Analysis and Predictions*
 
-![Customer Churn PowerBI Dashboard 3](Screenshots/powerbi/dashboard3.png)
+![Geographic Insights](https://i.postimg.cc/kXmG2bzP/Customer-Churn-power-BI-dashboard3.png)
 *Dashboard 3: Geographic and Demographic Insights*
 
 ### Main Churn Analytics Dashboards
-![Customer Churn Dashboard](Screenshots/powerbi/main_dashboard.png)
+![Comprehensive Analytics](https://i.postimg.cc/MpZGD8zs/Customer-Churn-dashboard.png)
 *Main Dashboard: Comprehensive Churn Analytics*
 
-![Customer Churn Dashboard 1](Screenshots/powerbi/main_dashboard1.png)
+![Advanced Metrics](https://i.postimg.cc/0QGgFbf7/Customer-churn-dashboard2.png)
 *Extended Dashboard: Advanced Metrics and KPIs*
 
 ## ETL Pipeline & CI/CD Infrastructure
 
 ### Airflow ETL Pipeline
-![Airflow UI Sign In](Screenshots/infrastructure/airflow_login.png)
+![Airflow Authentication](https://i.postimg.cc/tR5Qzn7j/Airflow-UI-ETL-pipeline-Sign-in-Page.png)
 *Airflow Authentication Interface*
 
-![Airflow ETL Pipeline Graph](Screenshots/infrastructure/airflow_graph.png)
+![ETL Pipeline](https://i.postimg.cc/pLyHrVWt/Airflow-UI-ETL-pipeline-Graph.png)
 *Customer Churn ETL Pipeline DAG Visualization*
 
 ### Jenkins CI/CD Pipeline
-![Jenkins Sign In](Screenshots/infrastructure/jenkins_login.png)
+![Jenkins Authentication](https://i.postimg.cc/Z56LrpKP/Jenkins-Sign-in-Page.png)
 *Jenkins Authentication Interface*
 
-![Jenkins Pipeline](Screenshots/infrastructure/jenkins_pipeline.png)
-*Customer Churn Prediction CI/CD Pipeline*
+![Jenkins Pipeline](https://i.postimg.cc/7LDnXhfF/Jenkins.png)
+*CI/CD Pipeline Configuration*
+
+![Deployment Flow](https://i.postimg.cc/faf9219b-cabd-468e-be8c-a4d10ef1bf2b)
+*Deployment Workflow Visualization*
 
 These dashboards and visualizations provide:
 - Comprehensive customer churn analysis
@@ -113,18 +116,17 @@ These dashboards and visualizations provide:
 
 ## Customer Churn Analytics Dashboard
 
-![Customer Churn Dashboard Overview](Screenshots/dashboard/images/dashboard1.png)
+![Customer Churn Dashboard Overview](https://i.postimg.cc/MpZGD8zs/Customer-Churn-dashboard.png)
 
 This comprehensive dashboard provides:
 - Revenue risk analysis and trends
 - Customer segmentation insights
-- Churn prediction metrics
-- Usage pattern analysis
-- Demographic distribution
+- Churn probability predictions
+- Key performance indicators
 
 ## Key Metrics and KPIs
 
-![Key Performance Metrics](Screenshots/dashboard/images/dashboard2.png)
+![Key Performance Metrics](https://i.postimg.cc/0QGgFbf7/Customer-churn-dashboard2.png)
 
 The dashboard tracks critical KPIs including:
 - Monthly revenue trends
@@ -135,7 +137,7 @@ The dashboard tracks critical KPIs including:
 
 ## Customer Journey Analysis
 
-![Customer Journey Insights](Screenshots/dashboard/images/dashboard3.png)
+![Customer Journey Insights](https://i.postimg.cc/kXmG2bzP/Customer-Churn-power-BI-dashboard3.png)
 
 Detailed analysis of:
 - Customer lifecycle stages
