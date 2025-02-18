@@ -64,6 +64,37 @@ Dataset consists customer information for a customer churn prediction problem. I
 
 * **Churn**: A binary indicator (1 or 0) representing whether the customer has churned (1) or not (0).
 
+# `Dashboard Visualizations`
+
+Our project includes comprehensive dashboard visualizations that provide insights into customer churn patterns:
+
+## Revenue and Churn Analysis
+![Revenue Risk Trend](Screenshots/dashboard/revenue_risk.png)
+![Churn by Speed](Screenshots/dashboard/churn_by_speed.png)
+
+## Customer Journey and Acquisition
+![Customer Journey Risk](Screenshots/dashboard/customer_journey.png)
+![Customer Acquisition vs Loss](Screenshots/dashboard/customer_acquisition.png)
+
+## Customer Segmentation
+![Most Valued Customers](Screenshots/dashboard/valued_customers.png)
+![Customer Risk Distribution](Screenshots/dashboard/risk_distribution.png)
+
+## Demographic Analysis
+![Customer Distribution by Location](Screenshots/dashboard/location_distribution.png)
+![Gender Distribution](Screenshots/dashboard/gender_distribution.png)
+
+## Usage Patterns
+![Monthly Bill Distribution](Screenshots/dashboard/monthly_bill.png)
+![Usage Analysis](Screenshots/dashboard/usage_analysis.png)
+
+These visualizations help in:
+- Tracking revenue risk and churn patterns
+- Understanding customer journey and risk points
+- Analyzing customer segments and demographics
+- Monitoring usage patterns and billing trends
+- Identifying acquisition and retention metrics
+
 # `Teck Tech Used`
 * **Python Programming Language**
 
