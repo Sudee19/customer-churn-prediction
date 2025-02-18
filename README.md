@@ -64,36 +64,92 @@ Dataset consists customer information for a customer churn prediction problem. I
 
 * **Churn**: A binary indicator (1 or 0) representing whether the customer has churned (1) or not (0).
 
-# `Dashboard Visualizations`
+# `Dashboards & Visualizations`
 
-Our project includes comprehensive dashboard visualizations that provide insights into customer churn patterns:
+## PowerBI Dashboards
 
-## Revenue and Churn Analysis
-![Revenue Risk Trend](Screenshots/dashboard/revenue_risk.png)
-![Churn by Speed](Screenshots/dashboard/churn_by_speed.png)
+### Customer Analysis Dashboard Series
+![Customer Churn PowerBI Dashboard 0](Screenshots/powerbi/dashboard0.png)
+*Dashboard 0: Overview of Customer Metrics*
 
-## Customer Journey and Acquisition
-![Customer Journey Risk](Screenshots/dashboard/customer_journey.png)
-![Customer Acquisition vs Loss](Screenshots/dashboard/customer_acquisition.png)
+![Customer Churn PowerBI Dashboard 1](Screenshots/powerbi/dashboard1.png)
+*Dashboard 1: Detailed Customer Segmentation*
 
-## Customer Segmentation
-![Most Valued Customers](Screenshots/dashboard/valued_customers.png)
-![Customer Risk Distribution](Screenshots/dashboard/risk_distribution.png)
+![Customer Churn PowerBI Dashboard 2](Screenshots/powerbi/dashboard2.png)
+*Dashboard 2: Risk Analysis and Predictions*
 
-## Demographic Analysis
-![Customer Distribution by Location](Screenshots/dashboard/location_distribution.png)
-![Gender Distribution](Screenshots/dashboard/gender_distribution.png)
+![Customer Churn PowerBI Dashboard 3](Screenshots/powerbi/dashboard3.png)
+*Dashboard 3: Geographic and Demographic Insights*
 
-## Usage Patterns
-![Monthly Bill Distribution](Screenshots/dashboard/monthly_bill.png)
-![Usage Analysis](Screenshots/dashboard/usage_analysis.png)
+### Main Churn Analytics Dashboards
+![Customer Churn Dashboard](Screenshots/powerbi/main_dashboard.png)
+*Main Dashboard: Comprehensive Churn Analytics*
 
-These visualizations help in:
-- Tracking revenue risk and churn patterns
-- Understanding customer journey and risk points
-- Analyzing customer segments and demographics
-- Monitoring usage patterns and billing trends
-- Identifying acquisition and retention metrics
+![Customer Churn Dashboard 1](Screenshots/powerbi/main_dashboard1.png)
+*Extended Dashboard: Advanced Metrics and KPIs*
+
+## ETL Pipeline & CI/CD Infrastructure
+
+### Airflow ETL Pipeline
+![Airflow UI Sign In](Screenshots/infrastructure/airflow_login.png)
+*Airflow Authentication Interface*
+
+![Airflow ETL Pipeline Graph](Screenshots/infrastructure/airflow_graph.png)
+*Customer Churn ETL Pipeline DAG Visualization*
+
+### Jenkins CI/CD Pipeline
+![Jenkins Sign In](Screenshots/infrastructure/jenkins_login.png)
+*Jenkins Authentication Interface*
+
+![Jenkins Pipeline](Screenshots/infrastructure/jenkins_pipeline.png)
+*Customer Churn Prediction CI/CD Pipeline*
+
+These dashboards and visualizations provide:
+- Comprehensive customer churn analysis
+- Real-time monitoring of key metrics
+- Automated ETL pipeline status
+- Continuous integration and deployment tracking
+- Data-driven insights for decision making
+
+## Customer Churn Analytics Dashboard
+
+![Customer Churn Dashboard Overview](Screenshots/dashboard/images/dashboard1.png)
+
+This comprehensive dashboard provides:
+- Revenue risk analysis and trends
+- Customer segmentation insights
+- Churn prediction metrics
+- Usage pattern analysis
+- Demographic distribution
+
+## Key Metrics and KPIs
+
+![Key Performance Metrics](Screenshots/dashboard/images/dashboard2.png)
+
+The dashboard tracks critical KPIs including:
+- Monthly revenue trends
+- Customer acquisition vs churn rates
+- Risk distribution by customer segments
+- Geographic distribution of customers
+- Usage patterns and billing analysis
+
+## Customer Journey Analysis
+
+![Customer Journey Insights](Screenshots/dashboard/images/dashboard3.png)
+
+Detailed analysis of:
+- Customer lifecycle stages
+- Risk factors at each stage
+- Engagement metrics
+- Retention indicators
+- Behavioral patterns
+
+These visualizations help stakeholders:
+- Track and predict churn patterns
+- Identify at-risk customers
+- Optimize retention strategies
+- Make data-driven decisions
+- Monitor business performance
 
 # `Teck Tech Used`
 * **Python Programming Language**
