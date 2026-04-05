@@ -4,7 +4,7 @@
 
 This project uses a diverse set of technologies and languages:
 
-- Python (40%): Machine Learning, Data Processing, API Development
+- Python (40%): Machine Learning, Data Processing, API Development, Data Cleaning
   - Scikit-learn, Flask, Pandas, NumPy
   - Jupyter Notebooks for analysis
   - ML model files (.pkl, .keras)
