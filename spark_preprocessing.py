@@ -72,7 +72,7 @@ final_columns = ['Age'] + \
 preprocessed_df = preprocessed_df.select(final_columns)
 
 # Show the first few rows of the preprocessed dataset
-preprocessed_df.show(5)
+preprocessed_df.show(4)
 
 # Optional: Save the preprocessed dataset
 preprocessed_df.write.mode("overwrite").parquet("preprocessed_churn_data")
