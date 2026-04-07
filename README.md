@@ -14,7 +14,7 @@ This project uses a diverse set of technologies and languages:
   - Node.js and npm packages
   - Configuration files
 
-- R (15%): Data Analysis and Visualization
+- R and PowerBI (15%): Data Analysis and Visualization
   - PowerBI dashboards
   - Statistical analysis
   - Data visualization
