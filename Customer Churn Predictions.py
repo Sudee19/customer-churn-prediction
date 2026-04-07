@@ -18,6 +18,6 @@ def churn_visualization(request):
                             color_discrete_sequence=['darkpink', 'lightpink'])
 
     # Convert the plotly figure to HTML
-    
+    graph_html = pio.to_html(fig_3d, full_html=False)
 
     return render(request, 'visualizations/churn_visualization.html', {'graph_html': graph_html})
